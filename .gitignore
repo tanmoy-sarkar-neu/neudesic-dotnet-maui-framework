@@ -1,0 +1,25 @@
+﻿#########################################################
+#Visual studio will append items to the end of this file
+#if ignoring from within VS
+########################################################
+
+#Files
+*.DotSettings
+*.v2
+*.user
+#End Files
+
+#Directories
+*.config
+**/bin
+**/obj
+**/Debug
+**/Release
+**/v16
+**/.vs
+
+#End Directories
+/services/packages
+/services/ActivityFeedService/ActivityFeedService.Database.SQL
+/services/IsaNetAddressUpdate/Properties/PublishProfiles
+/services/IsaNetAddressUpdateFunction/Properties/PublishProfiles
