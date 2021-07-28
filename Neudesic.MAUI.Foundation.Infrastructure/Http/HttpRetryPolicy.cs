@@ -15,7 +15,7 @@ namespace Neudesic.MAUI.Foundation.Infrastructure
 
         }
 
-        // pass logger and customize this method
+        // Pass logger and customize this method
         private static void OnHttpRetry(DelegateResult<HttpResponseMessage> result, TimeSpan timeSpan, int retryCount)
         {
             if (result.Result != null)
