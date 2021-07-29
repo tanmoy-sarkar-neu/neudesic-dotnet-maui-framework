@@ -6,9 +6,9 @@ namespace Neudesic.MAUI.Foundation.Infrastructure
 {
     public static class HttpClientServiceExtensions
     {
-        public static void RegisterRemoteService<TRefitContract>(this IServiceCollection services, Uri baseUrl, string policyName = "", PolicyConfig policyConfig = null) where TRefitContract : class
-        {           
-            var httpClientBuilder = services.AddRefitClient<TRefitContract>()
+        public static void RegisterRemoteService<TContract>(this IServiceCollection services, Uri baseUrl, string policyName = "", PolicyConfig policyConfig = null) where TContract : class
+        {
+            var httpClientBuilder = services.AddRefitClient<TContract>()
             .ConfigureHttpClient(client => client.BaseAddress = baseUrl);
             if (policyConfig != null)
             {

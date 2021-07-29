@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Neudesic.MAUI.Foundation.Core.Interfaces.Infrastructure;
 
 namespace Neudesic.MAUI.Foundation.Infrastructure
 {

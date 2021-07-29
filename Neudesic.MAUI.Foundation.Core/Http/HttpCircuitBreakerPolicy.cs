@@ -1,11 +1,12 @@
-﻿using Polly;
+﻿using Neudesic.MAUI.Foundation.Core.Interfaces.Infrastructure;
+using Polly;
 using Polly.CircuitBreaker;
 using System;
 using System.Net.Http;
 
 namespace Neudesic.MAUI.Foundation.Infrastructure
 {
-    public class HttpCircuitBreakerPolicy
+    public static class HttpCircuitBreakerPolicy
     {
         public static AsyncCircuitBreakerPolicy<HttpResponseMessage> GetHttpCircuitBreakerPolicy(ICircuitBreakerPolicyConfig circuitBreakerPolicyConfig)
         {
@@ -24,13 +25,7 @@ namespace Neudesic.MAUI.Foundation.Infrastructure
 
         public static void OnHttpBreak(DelegateResult<HttpResponseMessage> result, TimeSpan breakDuration, int retryCount)
         {
-            //  logger.LogError("Service shutdown during {breakDuration} after {DefaultRetryCount} failed retries.", breakDuration, retryCount);
             throw new BrokenCircuitException("Service inoperative. Please try again later");
         }
-
-        //public static void OnHttpReset(ILogger logger)
-        //{
-        //    // logger.LogError("Service restarted.");
-        //}
     }
 }

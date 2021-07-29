@@ -1,16 +1,7 @@
-﻿namespace Neudesic.MAUI.Foundation.Infrastructure
+﻿using Neudesic.MAUI.Foundation.Core.Interfaces.Infrastructure;
+
+namespace Neudesic.MAUI.Foundation.Infrastructure
 {
-    public interface ICircuitBreakerPolicyConfig
-    {
-        int RetryCount { get; }
-        int BreakDuration { get; }
-    }
-
-    public interface IRetryPolicyConfig
-    {
-        int RetryCount { get; }
-    }
-
     public class PolicyConfig : ICircuitBreakerPolicyConfig, IRetryPolicyConfig
     {
         public int RetryCount { get; }
