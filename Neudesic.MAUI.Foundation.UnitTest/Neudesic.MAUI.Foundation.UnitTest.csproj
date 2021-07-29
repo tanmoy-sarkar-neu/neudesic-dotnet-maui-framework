@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Neudesic.MAUI.Foundation.Core\Neudesic.MAUI.Foundation.Core.csproj" />
+  </ItemGroup>
+
+</Project>
