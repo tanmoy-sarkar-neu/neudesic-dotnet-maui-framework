@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neudesic.MAUI.Foundation.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neudesic.MAUI.Foundation.Core", "Neudesic.MAUI.Foundation.Core\Neudesic.MAUI.Foundation.Core.csproj", "{2635F3B2-74D7-453F-9486-5EC2CCC5B66C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neudesic.MAUI.Foundation.UnitTest", "Neudesic.MAUI.Foundation.UnitTest\Neudesic.MAUI.Foundation.UnitTest.csproj", "{801F3A62-7A6B-4F9E-BE63-09E5F56AA5F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neudesic.MAUI.Foundation.UnitTest", "Neudesic.MAUI.Foundation.UnitTest\Neudesic.MAUI.Foundation.UnitTest.csproj", "{380C05AA-A345-4DD1-9BE8-C9E69DBEDBA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{2635F3B2-74D7-453F-9486-5EC2CCC5B66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2635F3B2-74D7-453F-9486-5EC2CCC5B66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2635F3B2-74D7-453F-9486-5EC2CCC5B66C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{801F3A62-7A6B-4F9E-BE63-09E5F56AA5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{801F3A62-7A6B-4F9E-BE63-09E5F56AA5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{801F3A62-7A6B-4F9E-BE63-09E5F56AA5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{801F3A62-7A6B-4F9E-BE63-09E5F56AA5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380C05AA-A345-4DD1-9BE8-C9E69DBEDBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380C05AA-A345-4DD1-9BE8-C9E69DBEDBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380C05AA-A345-4DD1-9BE8-C9E69DBEDBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380C05AA-A345-4DD1-9BE8-C9E69DBEDBA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

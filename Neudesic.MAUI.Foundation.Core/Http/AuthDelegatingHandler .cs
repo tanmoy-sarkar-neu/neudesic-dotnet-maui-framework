@@ -9,22 +9,21 @@ namespace Neudesic.MAUI.Foundation.Core.Http
 {
     public class AuthDelegatingHandler : DelegatingHandler
     {
-        private readonly IIdentityService _identityService;
-        public AuthDelegatingHandler(IIdentityService identityService)
-        {
+        private readonly ITokenProvider _tokenProvider;
 
-            if (identityService == null)
+        public AuthDelegatingHandler(ITokenProvider tokenProvider)
+        {
+            if (tokenProvider == null)
             {
                 //TODO: Means its not implemented or not registered in container. Handle this error
-                throw new ArgumentNullException(nameof(identityService), new Exception("Contract for IdentityService is not found or its not registered in DI container."));
+                throw new ArgumentNullException(nameof(tokenProvider), "Contract for IdentityService is not found or its not registered in DI container.");
             }
-            this._identityService = identityService;
+            this._tokenProvider = tokenProvider;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-
-            var token = await _identityService.GetAccessTokenAsync();
+            var token = await _tokenProvider.GetAccessTokenAsync();
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
         }
