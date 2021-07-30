@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
 using Neudesic.MAUI.Foundation.Core.Http;
@@ -15,11 +16,13 @@ namespace Neudesic.MAUI.Foundation.UnitTest
         private readonly Mock<ITokenProvider> tokenProvider;
         private readonly Mock<AuthDelegatingHandler> handlerMock;
         private readonly Mock<DelegatingHandler> delegateHandlerMock;
+        private readonly Mock<ILogger> loggerMock;
 
         public BaseRemoteServiceTest()
         {
+            loggerMock = new Mock<ILogger>();
             tokenProvider = new Mock<ITokenProvider>();
-            handlerMock = new Mock<AuthDelegatingHandler>(tokenProvider.Object);
+            handlerMock = new Mock<AuthDelegatingHandler>(tokenProvider.Object, loggerMock.Object);
             delegateHandlerMock = new Mock<DelegatingHandler>(handlerMock.Object);
         }
 

@@ -1,9 +1,11 @@
-﻿namespace Neudesic.MAUI.Foundation.Core.Interfaces.Common.Caching
+﻿using System.Threading.Tasks;
+
+namespace Neudesic.MAUI.Foundation.Core.Interfaces.Common.Caching
 {
     public interface ICacheProvider
     {
-        public string GetValue(string key);
+        public Task<string> GetValueAsync(string key);
 
-        public string SetValue(string key, string value);
+        public Task<string> SetValueAsync(string key, string value);
     }
 }

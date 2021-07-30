@@ -32,7 +32,7 @@ namespace Neudesic.MAUI.Foundation.Common.TokenProviderService
         /// Used this method to get access token using refresh token
         /// </summary>
         /// <returns></returns>
-        protected async Task<bool> TrySignin()
+        public virtual async Task<bool> TrySigninAsync()
         {
             _logger.LogInformation("TrySignin started...");
             try
@@ -43,7 +43,7 @@ namespace Neudesic.MAUI.Foundation.Common.TokenProviderService
                 var accessToken = await _tokenProvider.GetAccessTokenByRefreshTokenAsync(refreshToken);
                 _logger.LogInformation("Successfully get access token using refresh token");
 
-                _cacheProvider.SetValue(_tokenProvider.AccessTokenCacheKey, accessToken);
+                await _cacheProvider.SetValueAsync(_tokenProvider.AccessTokenCacheKey, accessToken);
                 _logger.LogInformation($"Successfully persist access token in cache. Key: {_tokenProvider.AccessTokenCacheKey}");
 
                 return true;
