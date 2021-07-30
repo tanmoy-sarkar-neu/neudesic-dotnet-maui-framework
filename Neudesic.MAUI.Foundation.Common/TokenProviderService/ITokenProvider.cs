@@ -1,6 +1,9 @@
-﻿namespace Neudesic.MAUI.Foundation.Common.TokenProviderService
+﻿using System.Threading.Tasks;
+
+namespace Neudesic.MAUI.Foundation.Common.TokenProviderService
 {
-    interface ITokenProvider
+    public interface ITokenProvider
     {
+        Task<string> GetAccessTokenAsync();
     }
 }
