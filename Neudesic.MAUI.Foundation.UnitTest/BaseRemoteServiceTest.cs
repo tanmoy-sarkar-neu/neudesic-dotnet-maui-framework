@@ -1,12 +1,12 @@
+using Moq;
+using Moq.Protected;
+using Neudesic.MAUI.Foundation.Core.Http;
+using Neudesic.MAUI.Foundation.Core.Interfaces.Common.TokenProvider;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
-using Moq;
-using Neudesic.MAUI.Foundation.Core.Http;
-using Moq.Protected;
-using Neudesic.MAUI.Foundation.Common.TokenProviderService;
 
 namespace Neudesic.MAUI.Foundation.UnitTest
 {
