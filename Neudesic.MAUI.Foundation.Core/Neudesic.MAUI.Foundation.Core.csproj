@@ -8,4 +8,7 @@
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.1" />
     <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Neudesic.MAUI.Foundation.Common\Neudesic.MAUI.Foundation.Common.csproj" />
+  </ItemGroup>
 </Project>
