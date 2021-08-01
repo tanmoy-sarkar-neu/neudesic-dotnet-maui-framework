@@ -27,7 +27,7 @@ namespace Neudesic.MAUI.Foundation.UnitTest
         }
 
         [Fact]
-        public void ShouldCallAtleastOnce()
+        public void ShouldCallSendAsyncAtleastOnce()
         {
             handlerMock.Protected().As<IAuthDelegatingHandler>().Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new HttpResponseMessage()

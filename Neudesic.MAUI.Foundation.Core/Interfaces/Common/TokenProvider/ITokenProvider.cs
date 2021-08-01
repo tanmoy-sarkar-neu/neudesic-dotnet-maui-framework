@@ -7,6 +7,9 @@ namespace Neudesic.MAUI.Foundation.Core.Interfaces.Common.TokenProvider
 {
     public interface ITokenProvider
     {
+        /// <summary>
+        /// Use this property to set access token cache key. If you are not using cache then assign null or String.Empty
+        /// </summary>
         public string AccessTokenCacheKey { get; }
 
         Task<string> GetAccessTokenAsync();

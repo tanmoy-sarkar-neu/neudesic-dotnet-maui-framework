@@ -29,11 +29,16 @@ namespace Neudesic.MAUI.Foundation.Common.TokenProviderService
         }
 
         /// <summary>
-        /// Used this method to get access token using refresh token
+        /// Used this method to get access token using refresh token.Cache is used to retreive access token
         /// </summary>
         /// <returns></returns>
         public virtual async Task<bool> TrySigninAsync()
         {
+            if (String.IsNullOrEmpty(_tokenProvider.AccessTokenCacheKey))
+            {
+                _logger.LogInformation("Access Token Cache key is empty");
+                return false;
+            }
             _logger.LogInformation("TrySignin started...");
             try
             {
