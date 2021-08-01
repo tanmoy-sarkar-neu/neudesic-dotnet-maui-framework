@@ -35,7 +35,7 @@ namespace Neudesic.MAUI.Foundation.UnitTest
         }
 
         [Fact]
-        public async Task ShouldMatchAsync()
+        public async Task ShouldReturnTrueAsync()
         {
             tokenProviderMock.Setup(x => x.GetAccessTokenAsync()).ReturnsAsync("refreshToken");
             tokenProviderMock.Setup(x => x.GetAccessTokenByRefreshTokenAsync("refreshToken")).ReturnsAsync("accessToken");
@@ -43,6 +43,27 @@ namespace Neudesic.MAUI.Foundation.UnitTest
             cacheProviderMock.Setup(x => x.SetValueAsync(tokenProviderMock.Object.AccessTokenCacheKey, "accessToken")).ReturnsAsync("");
             TokenProvider tokenProvider = new TokenProvider(tokenProviderMock.Object, cacheProviderMock.Object, loggerMock.Object);
             Assert.True(await tokenProvider.TrySigninAsync());
+        }
+
+        [Fact]
+        public async Task ShouldReturnFalseAsync()
+        {
+            tokenProviderMock.Setup(x => x.GetAccessTokenAsync()).ReturnsAsync("refreshToken");
+            tokenProviderMock.Setup(x => x.GetAccessTokenByRefreshTokenAsync("refreshToken")).ReturnsAsync("accessToken");
+            tokenProviderMock.Setup(x => x.AccessTokenCacheKey).Returns(String.Empty);
+            cacheProviderMock.Setup(x => x.SetValueAsync(tokenProviderMock.Object.AccessTokenCacheKey, "accessToken")).ReturnsAsync("");
+            TokenProvider tokenProvider = new TokenProvider(tokenProviderMock.Object, cacheProviderMock.Object, loggerMock.Object);
+            Assert.False(await tokenProvider.TrySigninAsync());
+        }
+
+        [Fact]
+        public async Task ShouldReturnNotImplementedExceptionAsync()
+        {
+            tokenProviderMock.Setup(x => x.GetAccessTokenAsync()).ReturnsAsync("refreshToken");
+            tokenProviderMock.Setup(x => x.AccessTokenCacheKey).Returns(String.Empty);
+            cacheProviderMock.Setup(x => x.SetValueAsync(tokenProviderMock.Object.AccessTokenCacheKey, "accessToken")).ReturnsAsync("");
+            TokenProvider tokenProvider = new TokenProvider(tokenProviderMock.Object, cacheProviderMock.Object, loggerMock.Object);
+            Assert.False(await tokenProvider.TrySigninAsync());
         }
     }
 }
