@@ -1,12 +1,13 @@
+using Microsoft.Extensions.Logging;
+using Moq;
+using Moq.Protected;
+using Neudesic.MAUI.Foundation.Core.Http;
+using Neudesic.MAUI.Foundation.Core.Interfaces.Common.TokenProvider;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
-using Moq;
-using Neudesic.MAUI.Foundation.Core.Http;
-using Moq.Protected;
-using Neudesic.MAUI.Foundation.Common.TokenProviderService;
 
 namespace Neudesic.MAUI.Foundation.UnitTest
 {
@@ -15,16 +16,18 @@ namespace Neudesic.MAUI.Foundation.UnitTest
         private readonly Mock<ITokenProvider> tokenProvider;
         private readonly Mock<AuthDelegatingHandler> handlerMock;
         private readonly Mock<DelegatingHandler> delegateHandlerMock;
+        private readonly Mock<ILogger> loggerMock;
 
         public BaseRemoteServiceTest()
         {
+            loggerMock = new Mock<ILogger>();
             tokenProvider = new Mock<ITokenProvider>();
-            handlerMock = new Mock<AuthDelegatingHandler>(tokenProvider.Object);
+            handlerMock = new Mock<AuthDelegatingHandler>(tokenProvider.Object, loggerMock.Object);
             delegateHandlerMock = new Mock<DelegatingHandler>(handlerMock.Object);
         }
 
         [Fact]
-        public void ShouldCallAtleastOnce()
+        public void ShouldCallSendAsyncAtleastOnce()
         {
             handlerMock.Protected().As<IAuthDelegatingHandler>().Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new HttpResponseMessage()

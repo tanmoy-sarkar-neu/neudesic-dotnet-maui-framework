@@ -8,4 +8,8 @@
     <Folder Include="Analytics\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Neudesic.MAUI.Foundation.Core\Neudesic.MAUI.Foundation.Core.csproj" />
+  </ItemGroup>
+
 </Project>

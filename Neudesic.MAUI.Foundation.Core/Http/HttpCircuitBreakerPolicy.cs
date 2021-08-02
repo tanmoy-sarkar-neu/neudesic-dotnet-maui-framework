@@ -1,4 +1,5 @@
-﻿using Neudesic.MAUI.Foundation.Core.Interfaces.Infrastructure;
+﻿using Microsoft.Extensions.Logging;
+using Neudesic.MAUI.Foundation.Core.Interfaces.Infrastructure;
 using Polly;
 using Polly.CircuitBreaker;
 using System;
@@ -8,7 +9,7 @@ namespace Neudesic.MAUI.Foundation.Infrastructure
 {
     public static class HttpCircuitBreakerPolicy
     {
-        public static AsyncCircuitBreakerPolicy<HttpResponseMessage> GetHttpCircuitBreakerPolicy(ICircuitBreakerPolicyConfig circuitBreakerPolicyConfig)
+        public static AsyncCircuitBreakerPolicy<HttpResponseMessage> GetHttpCircuitBreakerPolicy(ICircuitBreakerPolicyConfig circuitBreakerPolicyConfig, ILogger logger)
         {
             return HttpPolicyBuilder.GetBaseBuilder()
                                       .CircuitBreakerAsync(circuitBreakerPolicyConfig.RetryCount + 1,
@@ -19,13 +20,18 @@ namespace Neudesic.MAUI.Foundation.Infrastructure
                                                            },
                                                            () =>
                                                            {
-                                                               // OnHttpReset(logger);
+                                                               OnHttpReset(logger);
                                                            });
         }
 
         public static void OnHttpBreak(DelegateResult<HttpResponseMessage> result, TimeSpan breakDuration, int retryCount)
         {
             throw new BrokenCircuitException("Service inoperative. Please try again later");
+        }
+
+        public static void OnHttpReset(ILogger logger)
+        {
+            logger.LogWarning("Service Reset");
         }
     }
 }

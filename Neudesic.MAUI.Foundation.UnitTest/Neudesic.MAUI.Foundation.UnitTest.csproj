@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Neudesic.MAUI.Foundation.Common\Neudesic.MAUI.Foundation.Common.csproj" />
     <ProjectReference Include="..\Neudesic.MAUI.Foundation.Core\Neudesic.MAUI.Foundation.Core.csproj" />
   </ItemGroup>
 
