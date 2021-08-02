@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Neudesic.MAUI.Foundation.Core.Interfaces.Common.Caching
 {
@@ -10,32 +11,31 @@ namespace Neudesic.MAUI.Foundation.Core.Interfaces.Common.Caching
         /// <summary>
         /// Get value from cache
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <returns></returns>
-        public Task<string> GetValueAsync(string key);
+        public Task<T> GetValueAsync<T>(string key);
 
         /// <summary>
-        /// Set value in cache
+        ///  Set value in cache
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public Task<string> SetValueAsync(string key, string value);
+        public Task SetValueAsync<T>(string key, T value);
 
         /// <summary>
         /// Delete key from cache
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="value"></param>
         /// <returns></returns>
-        public Task<string> DeleteKeyAsync(string key, string value);
+        public Task DeleteKeyAsync(string key);
 
         /// <summary>
         /// Delete all keys from cache
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
         /// <returns></returns>
-        public Task<string> DeleteAllAsync(string key, string value);
+        public Task ClearAsync();
     }
 }
