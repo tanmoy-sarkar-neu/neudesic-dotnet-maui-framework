@@ -10,9 +10,13 @@ namespace Neudesic.MAUI.Foundation.Core.Interfaces.Common.LocalStorage
     /// </summary>
     public interface ILocalStorage
     {
+        /// <summary>
+        /// Persist Item in LocalStorage
+        /// </summary>
+        /// <returns></returns>
         public Task SetItemAsync();
 
-        public Task<object> GetItemAsync();
+        public Task<T> GetItemAsync<T>();
 
         public Task RemoveItemAsync(string key);
 
